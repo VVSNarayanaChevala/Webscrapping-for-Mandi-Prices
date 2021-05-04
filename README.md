@@ -7,7 +7,6 @@ from autoscraper import AutoScraper
 url = 'http://agmarknet.gov.in/SearchCmmMkt.aspx?Tx_Commodity=3&Tx_State=OR&Tx_District=0&Tx_Market=0&DateFrom=01-May-2021&DateTo=04-May-2021&Fr_Date=01-May-2021&To_Date=04-May-2021&Tx_Trend=0&Tx_CommodityHead=Rice&Tx_StateHead=Odisha'
 
 # We can add one or multiple candidates here.
-# You can also put urls here to retrieve urls.
 wanted_list = ["Keonjhar", "Keonjhar","Rice", "Other", "2500", "2600", "2600", "02 May 2021"]
 
 scraper = AutoScraper()
@@ -196,27 +195,230 @@ result
       'Keonjhar',
       'Keonjhar',
       'Keonjhar',
+      'Puri',
+      'Puri',
       'Keonjhar',
-      'Keonjhar'],
+      'Keonjhar',
+      'Mayurbhanja'],
      'Market Name': ['Keonjhar',
       'Keonjhar',
       'Keonjhar(Dhekikote)',
       'Keonjhar(Dhekikote)',
+      'Nimapara',
+      'Nimapara',
       'Saharpada',
-      'Saharpada'],
-     'Commodity': ['Rice', 'Rice', 'Rice', 'Rice', 'Rice', 'Rice'],
-     'Variety': ['Other', 'Other', 'Other', 'Other', 'Other', 'Other'],
-     'Min Price (Rs./Quintal)': ['2500', '2500', '2500', '2500', '2500', '2500'],
-     'Modal Price (Rs./Quintal)': ['2600', '2600', '2600', '2600', '2500', '2600'],
-     'Max Price (Rs./Quintal)': ['2600', '2600', '2600', '2600', '2600', '2600'],
+      'Saharpada',
+      'Udala'],
+     'Commodity': ['Rice',
+      'Rice',
+      'Rice',
+      'Rice',
+      'Rice',
+      'Rice',
+      'Rice',
+      'Rice',
+      'Rice'],
+     'Variety': ['Other',
+      'Other',
+      'Other',
+      'Other',
+      'Other',
+      'Other',
+      'Other',
+      'Other',
+      'Other'],
+     'Min Price (Rs./Quintal)': ['2500',
+      '2500',
+      '2500',
+      '2500',
+      '3100',
+      '3000',
+      '2500',
+      '2500',
+      '2800'],
+     'Modal Price (Rs./Quintal)': ['2600',
+      '2600',
+      '2600',
+      '2600',
+      '3200',
+      '3100',
+      '2500',
+      '2600',
+      '2800'],
+     'Max Price (Rs./Quintal)': ['2600',
+      '2600',
+      '2600',
+      '2600',
+      '3400',
+      '3200',
+      '2600',
+      '2600',
+      '3100'],
      'Price Date': ['02 May 2021',
       '01 May 2021',
       '02 May 2021',
       '01 May 2021',
+      '04 May 2021',
+      '03 May 2021',
       '02 May 2021',
+      '01 May 2021',
       '01 May 2021']}
 
 
+
+
+```python
+import pandas as pd
+```
+
+
+```python
+respd = pd.DataFrame(pd.DataFrame(result.values()).T,)
+respd.columns = result.keys()
+respd
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>District Name</th>
+      <th>Market Name</th>
+      <th>Commodity</th>
+      <th>Variety</th>
+      <th>Min Price (Rs./Quintal)</th>
+      <th>Modal Price (Rs./Quintal)</th>
+      <th>Max Price (Rs./Quintal)</th>
+      <th>Price Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Keonjhar</td>
+      <td>Keonjhar</td>
+      <td>Rice</td>
+      <td>Other</td>
+      <td>2500</td>
+      <td>2600</td>
+      <td>2600</td>
+      <td>02 May 2021</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Keonjhar</td>
+      <td>Keonjhar</td>
+      <td>Rice</td>
+      <td>Other</td>
+      <td>2500</td>
+      <td>2600</td>
+      <td>2600</td>
+      <td>01 May 2021</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Keonjhar</td>
+      <td>Keonjhar(Dhekikote)</td>
+      <td>Rice</td>
+      <td>Other</td>
+      <td>2500</td>
+      <td>2600</td>
+      <td>2600</td>
+      <td>02 May 2021</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Keonjhar</td>
+      <td>Keonjhar(Dhekikote)</td>
+      <td>Rice</td>
+      <td>Other</td>
+      <td>2500</td>
+      <td>2600</td>
+      <td>2600</td>
+      <td>01 May 2021</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Puri</td>
+      <td>Nimapara</td>
+      <td>Rice</td>
+      <td>Other</td>
+      <td>3100</td>
+      <td>3200</td>
+      <td>3400</td>
+      <td>04 May 2021</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Puri</td>
+      <td>Nimapara</td>
+      <td>Rice</td>
+      <td>Other</td>
+      <td>3000</td>
+      <td>3100</td>
+      <td>3200</td>
+      <td>03 May 2021</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Keonjhar</td>
+      <td>Saharpada</td>
+      <td>Rice</td>
+      <td>Other</td>
+      <td>2500</td>
+      <td>2500</td>
+      <td>2600</td>
+      <td>02 May 2021</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Keonjhar</td>
+      <td>Saharpada</td>
+      <td>Rice</td>
+      <td>Other</td>
+      <td>2500</td>
+      <td>2600</td>
+      <td>2600</td>
+      <td>01 May 2021</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Mayurbhanja</td>
+      <td>Udala</td>
+      <td>Rice</td>
+      <td>Other</td>
+      <td>2800</td>
+      <td>2800</td>
+      <td>3100</td>
+      <td>01 May 2021</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+
+```
 
 
 ```python
